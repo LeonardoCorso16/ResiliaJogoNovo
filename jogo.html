@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gatolandia</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+    <img class="gato" src="https://media1.giphy.com/media/WXB88TeARFVvi/200w.gif?cid=ecf05e47teujaha516m8si862zx93xd98voggipnsyw5sypx&amp;rid=200w.gif" width="248" height="312" alt="dance party cat GIF" style="background: rgb(255, 102, 102);">
+  <img class="gato" src="https://media0.giphy.com/media/12HZukMBlutpoQ/200.gif?cid=ecf05e47teujaha516m8si862zx93xd98voggipnsyw5sypx&amp;rid=200.gif" width="248" height="186" alt="funny cat GIF" style="background: rgb(255, 102, 102);">
+
+  <img class="gato" src="https://media0.giphy.com/media/jpbnoe3UIa8TU8LM13/200w.gif?cid=ecf05e47ilx4t9ffrgp9xcgs9wsuvtw2ibqbum58boibzeni&amp;rid=200w.gif" width="248" height="248" alt="Cat Party GIF" style="background: rgb(255, 243, 92);">
+  <img class="gato" src="https://media0.giphy.com/media/q1MeAPDDMb43K/200w.gif?cid=ecf05e47ilx4t9ffrgp9xcgs9wsuvtw2ibqbum58boibzeni&amp;rid=200w.gif" width="248" height="155" alt="laser sword cat GIF" style="background: rgb(153, 51, 255);">
+  <img class="gato" src="https://media4.giphy.com/media/JRE3AvLsSRXg360F6l/200.gif?cid=ecf05e47ilx4t9ffrgp9xcgs9wsuvtw2ibqbum58boibzeni&amp;rid=200.gif" width="248" height="180" alt="The Real Housewives Of Beverly Hills Cat GIF by MOODMAN" style="background: rgb(153, 51, 255);">
+
+    <header> 
+        <h3>Gatolandia.
+            <br>
+            Você exagera nas bebidas num final de semana e sonha que e um gato
+        </h3>
+    </header> 
+    <main id="main">  
+        <button onclick="inicioDeJogo(), hidden = true " type="button" id="botaoStart">Começar Jogo</button>
+    </main>   
+    <script src="./jogo.js"></script>
+
+         
+      <script>
+
+        var decisao;
+        function fimdejogo(){
+            var opcao1 = "Sim";
+            var opcao2 = "Não";
+            numero = 23
+            blocoOpcoes("Recomeçar?",opcao1,opcao2);
+            var button = document.getElementById("bt2"+numero);
+            var button2 = document.getElementById("botaoStart");
+            var radios = document.getElementsByName("escolha");
+            button.onclick = function() {
+                for( i = 0;i< radios.length;i++){
+                    if(radios[i].checked){
+                        escolha = radios[i].value;
+                    }
+                }
+                if(escolha == opcao1){
+                 inicioDeJogo();
+                }
+                if(escolha == opcao2){
+                    button2.hidden = false;
+                    
+                }
+                
+                deletarBloco();
+            }
+        }
+
+        var escolha;
+        var numero = 0;
+        
+       
+        
+        function mostrar(div,coisa){
+            div.append(coisa);
+        }
+        function deletarBloco() {
+            document.getElementById("MsgBox").remove();
+        }
+        
+        function inicioDeJogo(){
+            numero = 01
+            blocoMensagem("Olá gato(a), Tu estava la tranquilo em casa e veio o Gatobs(Um gato que é um facilitador no curso Gatalia)" )
+            var button = document.getElementById("bt"+numero);
+            button.onclick = function() {um() , deletarBloco()}; 
+        }
+        
+        function um(){
+            document.body.style.backgroundImage = "url('Cyberdevbackground.jpg')";
+            numero = 02
+            var opcao1 = "Ir para a Rinha";
+            var opcao2 = "Recusar o Convite";
+            blocoOpcoes("E ele te chama para uma rinha de gatos?",opcao1,opcao2);
+            var button = document.getElementById("bt2"+numero);
+            var radios = document.getElementsByName("escolha");
+            button.onclick = function() {
+                for( i = 0;i< radios.length;i++){
+                    if(radios[i].checked){
+                        escolha = radios[i].value;
+                    }
+                }
+                if(escolha == opcao1){
+                   gabsFase1();
+                }
+                if(escolha == opcao2){
+                    gabsFase2();
+                }
+                
+                deletarBloco();
+            }
+        }
+        function gabsFase1(){
+            numero = 1;
+            blocoMensagem("Chegando la tu viu varios gatos tretando no telhado e do nada veio ela, a água da janela da Gataís(A outra facilitadora do curso Gatalia) ela é contra a rinha de gatos e liga para a Luisa Mell, tu e o Gatobs foram para a cadeia. F");
+            var button = document.getElementById("bt"+numero);
+            button.onclick = function() {deletarBloco(), fimdejogo();};
+        }
+        function gabsFase2(){
+            numero = 2;
+            blocoMensagem("Muito bem, Depois de dizer não para o Gatobs , você foi para a aula da Gatalia.");
+            var button = document.getElementById("bt"+numero);
+            button.onclick = function() {gabsFase3(), deletarBloco()};
+        }
+        function gabsFase3(){
+            numero = 1
+            var opcao1 = "Sim";
+            var opcao2 = "Não";
+            blocoOpcoes("Durante a aula, você prestou atenção? ",opcao1,opcao2);
+            var button = document.getElementById("bt2"+numero);
+            var radios = document.getElementsByName("escolha");
+            button.onclick = function() {
+                for( i = 0;i< radios.length;i++){
+                    if(radios[i].checked){
+                        escolha = radios[i].value;
+                    }
+                }
+                if(escolha == opcao1){
+                    gabsFase4Sim();
+                }
+                if(escolha == opcao2){
+                    gabsFase4Nao();
+                }
+                deletarBloco();
+            }
+        }
+        function gabsFase4Sim(){
+            numero = 3
+            blocoMensagem("Tu aprendeu tudo sobre vida de Gatos e ta pronto para a vida");
+            var button = document.getElementById("bt"+numero);
+            button.onclick = function() {gabsFase5(), deletarBloco()};
+        }
+        function gabsFase4Nao(){
+            numero = 4
+            blocoMensagem("Tu tomou um strigato e foi expulso do mundo. Tu perdeu. F no chat.");
+            var button = document.getElementById("bt"+numero);
+            button.onclick = function() {deletarBloco(), fimdejogo()};
+        }
+        function gabsFase5(){
+            numero = 5
+            var opcao1 = "Ser voluntario";
+            var opcao2 = "Não ser voluntario";
+            blocoOpcoes("O mundo dos Gatos teve uma doença chamada Gatoronga, e ai o Gatobs te chama para ser voluntario da vacina para a cura, você aceita o convite?",opcao1,opcao2);
+            var button = document.getElementById("bt2"+numero);
+            var radios = document.getElementsByName("escolha");
+            button.onclick = function() {
+                for( i = 0;i< radios.length;i++){
+                    if(radios[i].checked){
+                        escolha = radios[i].value;
+                    }
+                }
+                if(escolha == opcao1){
+                    gabsFase5Sim();
+                }
+                if(escolha == opcao2){
+                    gabsFase5Nao();
+                }
+                deletarBloco();
+            }
+            function gabsFase5Sim(){
+            numero = 3
+            blocoMensagem("F no chat. Tu morreu por suspeita de Gatoronga");
+            var button = document.getElementById("bt"+numero);
+            button.onclick = function() {deletarBloco(), fimdejogo()};
+        }
+        function gabsFase5Nao(){
+            numero = 4
+            blocoMensagem("Gatobs, morre por suspeita de Gatoronga após tomar a vacina, F no chat. Mas você volta para casa depois dessa aventura .");
+            var button = document.getElementById("bt"+numero);
+            button.onclick = function() {deletarBloco(), gabsFaseFinal()};
+        }
+        }
+        function gabsFaseFinal(){
+            numero = 6  
+            var opcao1 = "Criar a Vacina";
+            var opcao2 = "Ser lider da Rinha de gatos";
+            blocoOpcoes("Depois de 5 minutos de luto por Gatobs, você tem 2 opções. Criar a vacina ou ser lider da rinha de gatos no telhado da Gataís.",opcao1,opcao2);
+            var button = document.getElementById("bt2"+numero);
+            var radios = document.getElementsByName("escolha");
+            button.onclick = function() {
+                for( i = 0;i< radios.length;i++){
+                    if(radios[i].checked){
+                        escolha = radios[i].value;
+                    }
+                }
+                if(escolha == opcao1){
+                    gabsFaseFinalSim();
+                }
+                if(escolha == opcao2){
+                    gabsFase5Nao();
+                }
+                deletarBloco();
+            }
+        }
+        function gabsFaseFinalSim(){
+            numero = 3
+            blocoMensagem("Você cria a vacina e chama ela de Gatobs e consegue a cura para o mundo dos gatos. Parabéns você venceu ");
+            var button = document.getElementById("bt"+numero);
+            button.onclick = function() {deletarBloco(), fimdejogo()};
+        }
+        function gabsFase5Nao(){
+            numero = 4
+            blocoMensagem("Tu assume a rinha e toma mais um banho da Gataís e a Luisa Mel te captura. F no Chat. Você perdeu");
+            var button = document.getElementById("bt"+numero);
+            button.onclick = function() {deletarBloco(), fimdejogo()};
+        }
+
+        
+      </script>         
+    
+</body>
+</html>
